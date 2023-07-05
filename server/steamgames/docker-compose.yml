@@ -1,16 +1,33 @@
-version: '3'
+version: '3.8'
+
 services:
   postgres:
-    image: postgres:9.4
-    restart: always
-    container_name: 'steamgames-postgres'
-    env_file: ./containerConfig/psql.env
+    image: 'postgres:10'
+    container_name: 'steam-postgres'
+    networks:
+      - postgres-network
+    environment:
+      - POSTGRES_USER=salt
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_DB=steamdb
+    volumes:
+      - ./data/pgdata:/var/lib/postgresql/data
     ports:
       - 5432:5432
-    volumes:
-      - ./data/psql:/var/lib/postgresql/data
-  adminer:
-    image: adminer
     restart: always
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    container_name: 'salt-pgadmin'
+    networks:
+      - postgres-network
     ports:
-      - 1234:8080
+      - 5050:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: pgadmin4@pgadmin.org
+      PGADMIN_DEFAULT_PASSWORD: admin
+    restart: always
+networks:
+  postgres-network:
+    driver: bridge

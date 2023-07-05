@@ -2,12 +2,14 @@ package com.steamgames.steamgames;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-public class SteamgamesApplication {
+@EnableJpaRepositories
+public class SteamGamesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SteamgamesApplication.class, args);
+		SpringApplication.run(SteamGamesApplication.class, args);
 	}
 
 }
