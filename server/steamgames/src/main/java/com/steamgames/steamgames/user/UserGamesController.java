@@ -23,7 +23,9 @@ public class UserGamesController {
         this.service = service;
     }
     @GetMapping
-    public ResponseEntity<String> getUsers() {
-        return ResponseEntity.ok("Hello World");
+    public ResponseEntity<List<UserGames>> getUsers() {
+        List<UserGames> body = service.listUsers();
+        logger.info(body.toString());
+        return ResponseEntity.ok(body);
     }
 }
