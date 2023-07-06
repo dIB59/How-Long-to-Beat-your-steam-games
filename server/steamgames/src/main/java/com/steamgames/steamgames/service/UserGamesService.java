@@ -30,8 +30,10 @@ public class UserGamesService {
     public UserGames addUser(String steamId) {
         long steamIdL = Long.parseLong(steamId);
         SteamUserDataResponse userData = fetcher.fetchSteamUserData(steamIdL);
+        System.out.println(userData);
+        System.out.println(userData.response().game_count());
         UserGames usergames = new UserGames(steamIdL, userData.response().game_count());
         repo.saveUserGames(usergames);
-        return null;
+        return usergames;
     }
 }

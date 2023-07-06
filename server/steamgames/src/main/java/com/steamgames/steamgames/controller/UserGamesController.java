@@ -29,8 +29,9 @@ public class UserGamesController {
     }
 
     @PostMapping
-    public ResponseEntity<UserGames> addUser(@RequestBody String userId) {
-        UserGames body = service.addUser(userId);
+    public ResponseEntity<UserGames> addUser(@RequestBody AddUserDTO userPost) {
+        System.out.println(userPost.userId());
+        UserGames body = service.addUser(userPost.userId());
         logger.info(body.toString());
         return ResponseEntity.ok(body);
     }
