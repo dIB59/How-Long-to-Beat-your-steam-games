@@ -12,18 +12,16 @@ import org.springframework.web.util.UriComponentsBuilder;
 @Component
 public class SteamUserFetcher {
 
-    private static String API_KEY;
-    private final RestTemplate restTemplate;
-    private final String baseUrl = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/";
+    private final String API_KEY;
 
     @Autowired
-    public SteamUserFetcher(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
+    public SteamUserFetcher() {
         Dotenv dotenv = Dotenv.load();
         API_KEY = dotenv.get("STEAM_API_KEY");
     }
 
     public SteamUserDataResponse fetchSteamUserData(long steamId) {
+        String baseUrl = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/";
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl)
                 .queryParam("steamid", steamId)
                 .queryParam("format", "json")
@@ -31,17 +29,7 @@ public class SteamUserFetcher {
                 .queryParam("include_appinfo", "true")
                 .queryParam("include_played_free_games", "true");
 
-        System.out.println(builder.toUriString());
         WebClient webClient = WebClient.create();
-
-
-        String res = webClient.get()
-                .uri(builder.toUriString())
-                .retrieve()
-                .bodyToMono(String.class)
-                .block();
-
-        System.out.println(res);
 
         SteamUserDataResponse responseBody = webClient.get()
                 .uri(builder.toUriString())
@@ -49,18 +37,10 @@ public class SteamUserFetcher {
                 .bodyToMono(SteamUserDataResponse.class)
                 .block();
 
-        // Process the response
         if (responseBody != null) {
-            System.out.println(responseBody);
             return responseBody;
-        } else {
-            System.out.println("Request failed or returned an empty response.");
         }
-       return null;
+        System.out.println("Request failed or returned an empty response.");
+        return null;
     }
-
-    public static String getApiKey() {
-        return API_KEY;
-    }
-
 }

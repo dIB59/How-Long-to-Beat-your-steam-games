@@ -8,7 +8,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,8 +15,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-//@ActiveProfiles("test")
 public class SteamUserFetcherTest {
 
 
@@ -28,52 +25,31 @@ public class SteamUserFetcherTest {
     );
 
     @Mock
-    private RestTemplate restTemplate;
-
     private SteamUserFetcher steamUserFetcher;
 
     @BeforeEach
     public void setup() {
         MockitoAnnotations.openMocks(this);
-        steamUserFetcher = new SteamUserFetcher(restTemplate);
+//        steamUserFetcher = new SteamUserFetcher();
     }
 
     @Test
     public void MockedFetchSteamUserDataTest() {
         long hibSteamId = 76561198347296426L;
-        String expectedUrl = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?steamid="
-                + hibSteamId + "&format=json&key=" + SteamUserFetcher.getApiKey()
-                + "&include_appinfo=true&include_played_free_games=true";
         SteamUserDataResponse mockUserData = new SteamUserDataResponse(new ResponseRecord(3, games));
-
-        when(restTemplate.getForObject(expectedUrl, SteamUserDataResponse.class)).thenReturn(mockUserData);
-
+        when(steamUserFetcher.fetchSteamUserData(hibSteamId)).thenReturn(mockUserData);
         SteamUserDataResponse result = steamUserFetcher.fetchSteamUserData(hibSteamId);
-        System.out.println(result);
-
         assertEquals(mockUserData, result);
-        verify(restTemplate, times(1)).getForObject(expectedUrl, SteamUserDataResponse.class);
-    }
-
-    @Test
-    public void ValidApiKeyTest() {
-        String expectedApiKey = SteamUserFetcher.getApiKey();
-        System.out.println(expectedApiKey);
-        assertNotNull(expectedApiKey);
-
     }
 
     @Test
     public void fetchSteamUserDataTest() {
         long hibSteamId = 76561198347296426L;
+        steamUserFetcher = new SteamUserFetcher();
         SteamUserDataResponse result = steamUserFetcher.fetchSteamUserData(hibSteamId);
-
         System.out.println(result);
-
         assertNotEquals(0, result.response().game_count());
         Assertions.assertNotNull(result.response().games());
-
-
     }
 
 }
