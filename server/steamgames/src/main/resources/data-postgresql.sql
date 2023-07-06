@@ -1,2 +1,2 @@
-INSERT INTO user_games (steam_id ,number_of_games) VALUES (1, 1) ON CONFLICT DO NOTHING;
-INSERT INTO user_games (steam_id ,number_of_games) VALUES (2, 12) ON CONFLICT DO NOTHING;
+INSERT INTO user_games (steam_id ,number_of_games, persona_name) VALUES (14234243242, 19, 'RandomPerson') ON CONFLICT DO NOTHING;
+INSERT INTO user_games (steam_id ,number_of_games, persona_name) VALUES (23879287274, 5, 'LolWhoAreYou') ON CONFLICT DO NOTHING;

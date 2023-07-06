@@ -9,11 +9,9 @@ public class UserGames {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
-
+    private String personaName;
     private long steamId;
-
     private int numberOfGames;
-
     public Long getId() {
         return id;
     }
@@ -34,9 +32,18 @@ public class UserGames {
         this.steamId = steamId;
     }
 
-    public UserGames(long steamId, int numberOfGames) {
+    public String getPersonaName() {
+        return personaName;
+    }
+
+    public void setPersonaName(String personname) {
+        this.personaName = personname;
+    }
+
+    public UserGames(long steamId, int numberOfGames, String personaName) {
         this.steamId = steamId;
         this.numberOfGames = numberOfGames;
+        this.personaName = personaName;
     }
 
     public UserGames() {

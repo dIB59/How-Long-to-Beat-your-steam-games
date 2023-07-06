@@ -36,8 +36,8 @@ public class SteamUserFetcherTest {
     public void MockedFetchSteamUserDataTest() {
         long hibSteamId = 76561198347296426L;
         SteamUserDataResponse mockUserData = new SteamUserDataResponse(new ResponseRecord(3, games));
-        when(steamUserFetcher.fetchSteamUserData(hibSteamId)).thenReturn(mockUserData);
-        SteamUserDataResponse result = steamUserFetcher.fetchSteamUserData(hibSteamId);
+        when(steamUserFetcher.fetchSteamUserGamesData(hibSteamId)).thenReturn(mockUserData);
+        SteamUserDataResponse result = steamUserFetcher.fetchSteamUserGamesData(hibSteamId);
         assertEquals(mockUserData, result);
     }
 
@@ -45,7 +45,7 @@ public class SteamUserFetcherTest {
     public void fetchSteamUserDataTest() {
         long hibSteamId = 76561198347296426L;
         steamUserFetcher = new SteamUserFetcher();
-        SteamUserDataResponse result = steamUserFetcher.fetchSteamUserData(hibSteamId);
+        SteamUserDataResponse result = steamUserFetcher.fetchSteamUserGamesData(hibSteamId);
         System.out.println(result);
         assertNotEquals(0, result.response().game_count());
         Assertions.assertNotNull(result.response().games());

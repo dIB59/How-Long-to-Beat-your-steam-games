@@ -24,4 +24,8 @@ public class UserGamesRepository {
         System.out.println(userGames);
         repo.save(userGames);
     }
+
+    public void deleteUserById(long userId) {
+        repo.deleteById(userId);
+    }
 }
