@@ -11,8 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class SteamUserFetcher {
 
     private static String API_KEY;
-
-    private RestTemplate restTemplate;
+    private final RestTemplate restTemplate;
 
     @Autowired
     public SteamUserFetcher(RestTemplate restTemplate) {
@@ -21,7 +20,7 @@ public class SteamUserFetcher {
         API_KEY = dotenv.get("STEAM_API_KEY");
     }
 
-    public SteamUserData fetchSteamUserData(String steamId) {
+    public SteamUserData fetchSteamUserData(long steamId) {
         String url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?steamid="
                 + steamId + "&format=json&key=" + API_KEY
                 + "&include_appinfo=true&include_played_free_games=true";
