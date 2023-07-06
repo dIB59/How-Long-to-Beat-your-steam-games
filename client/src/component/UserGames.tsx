@@ -43,8 +43,8 @@ export const UserGames: FC<UserGamesProps> = (props) => {
         <table className='table'>
           <thead>
             <tr>
-              <th>
-                <h2>ID</h2>
+            <th>
+                <h2>Persona</h2>
               </th>
               <th>
                 <h2>
@@ -57,7 +57,8 @@ export const UserGames: FC<UserGamesProps> = (props) => {
               <th>
                 <h2>Steam ID</h2>
               </th>
-              <th></th>
+              <th>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -67,7 +68,7 @@ export const UserGames: FC<UserGamesProps> = (props) => {
                 onMouseEnter={() => handleRowHover(index)}
                 onMouseLeave={() => handleRowHover(0)}
               >
-                <td>{data.id}</td>
+                <td>{data.personaName}</td>
                 <td>{data.numberOfGames}</td>
                 <td>{data.steamId}</td>
                 <td>

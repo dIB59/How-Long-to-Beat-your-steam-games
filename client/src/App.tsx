@@ -9,6 +9,7 @@ type ResponseData = {
   id: number;
   steamId: string;
   numberOfGames: number;
+  personaName: string;
 };
 
 function App() {
@@ -18,9 +19,7 @@ function App() {
   const [responseData, setResponseData] = useState<ResponseData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = async () => {
-    setLoading(true);
-  
+  const fetchData = async () => {  
     try {
       const response = await axios.get<UserGame[]>('http://localhost:8080/api/users');
       setUserGamesData(response.data);
@@ -64,9 +63,7 @@ function App() {
     <div>
       <Form onSubmit={handleSubmit} error={error} />
       {responseData && (
-        <p>
-          You added a new user with the ID: {responseData.id}
-        </p>
+        <p>You added a new user with the ID: {responseData.id}</p>
       )}
       <hr />
       <UserGames loading={loading} userGamesData={userGamesData} fetchData={fetchData} handleSort={handleSort} sortOrder={sortOrder} />
