@@ -33,9 +33,9 @@ function App() {
     <div>
       <Form onSubmit={handleSubmit} error={error} />
       {responseData && (
-        <div>
+        <p>
           You added a new user with the ID: {responseData.id}
-        </div>
+        </p>
       )}
       <hr />
       <UserGames />

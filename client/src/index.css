@@ -48,7 +48,12 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #ffffff;
+}
+button:active {
+  color: black;
+  background-color: white;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 button:focus,
 button:focus-visible {

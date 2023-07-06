@@ -24,8 +24,9 @@ const Form: React.FC<FormProps> = ({ onSubmit, error }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          User ID:
           <input
+          //field is empty then have the user enter a user ID
+            placeholder="Enter your Steam ID"
             type="text"
             value={userId}
             onChange={(event) => setUserId(event.target.value)}

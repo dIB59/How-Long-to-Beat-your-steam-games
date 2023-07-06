@@ -12,35 +12,32 @@ export const UserGames = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:8080/api/users')
-      .then(response => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get<UserGame[]>('http://localhost:8080/api/users');
         setUserGamesData(response.data);
-        setLoading(false);
-      })
-      .catch(error => {
+        console.log(response.data);
+      } catch (error) {
         console.error(error);
+      } finally {
         setLoading(false);
-      });
-  }, [userGamesData]);
+      }
+    };
 
-  useEffect(() => {
-    if (userGamesData) {
-      setLoading(false);
-    }
-  }, [userGamesData]);
-
+    fetchData();
+  }, []);
+    
   return (
-    <article className='userGamesArticle'>
+    <main className='userGamesArticle'>
       {loading ? (
         <p>Loading user games...</p>
       ) : userGamesData && userGamesData.length > 0 ? (
         <table>
             <thead>
                 <tr>
-                <th>ID</th>
-                <th>Number of Games</th>
-                <th>Steam ID</th>
+                <th><h2>ID</h2></th>
+                <th><h2>Number of Games</h2></th>
+                <th><h2>Steam ID</h2></th>
                 </tr>
             </thead>
             <tbody>
@@ -56,6 +53,6 @@ export const UserGames = () => {
       ) : (
         <p>No user games found.</p>
       )}
-    </article>
+    </main>
   );
 };
