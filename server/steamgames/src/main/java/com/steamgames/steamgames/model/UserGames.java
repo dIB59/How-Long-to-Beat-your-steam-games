@@ -10,6 +10,8 @@ public class UserGames {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    private long steamId;
+
     private int numberOfGames;
 
     public Long getId() {
@@ -22,5 +24,21 @@ public class UserGames {
 
     public void setNumberOfGames(int numberOfGames) {
         this.numberOfGames = numberOfGames;
+    }
+
+    public long getSteamId() {
+        return steamId;
+    }
+
+    public void setSteamId(long steamId) {
+        this.steamId = steamId;
+    }
+
+    public UserGames(long steamId, int numberOfGames) {
+        this.steamId = steamId;
+        this.numberOfGames = numberOfGames;
+    }
+
+    public UserGames() {
     }
 }

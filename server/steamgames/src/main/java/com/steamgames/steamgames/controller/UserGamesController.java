@@ -4,10 +4,7 @@ import com.steamgames.steamgames.model.UserGames;
 import com.steamgames.steamgames.service.UserGamesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -27,6 +24,13 @@ public class UserGamesController {
     @GetMapping
     public ResponseEntity<List<UserGames>> getUsers() {
         List<UserGames> body = service.listUsers();
+        logger.info(body.toString());
+        return ResponseEntity.ok(body);
+    }
+
+    @PostMapping
+    public ResponseEntity<UserGames> addUser(@RequestBody String userId) {
+        UserGames body = service.addUser(userId);
         logger.info(body.toString());
         return ResponseEntity.ok(body);
     }
