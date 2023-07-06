@@ -32,6 +32,7 @@ export const UserGames = () => {
                         <div key={data.id}>
                             <p>{data.id}</p>
                             <p>{data.numberOfGames}</p>
+                            
                         </div>
                     ))}
                 </div>
