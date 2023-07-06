@@ -12,6 +12,16 @@ public class UserGames {
     private String personaName;
     private long steamId;
     private int numberOfGames;
+    private int totalPlaytime;
+
+    public int getTotalPlaytime() {
+        return totalPlaytime;
+    }
+
+    public void setTotalPlaytime(int totalPlaytime) {
+        this.totalPlaytime = totalPlaytime;
+    }
+
     public Long getId() {
         return id;
     }
@@ -40,10 +50,11 @@ public class UserGames {
         this.personaName = personname;
     }
 
-    public UserGames(long steamId, int numberOfGames, String personaName) {
+    public UserGames(long steamId, int numberOfGames, String personaName, int totalPlaytime) {
         this.steamId = steamId;
         this.numberOfGames = numberOfGames;
         this.personaName = personaName;
+        this.totalPlaytime = totalPlaytime;
     }
 
     public UserGames() {

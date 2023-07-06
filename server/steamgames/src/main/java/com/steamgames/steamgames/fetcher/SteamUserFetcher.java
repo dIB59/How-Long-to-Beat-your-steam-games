@@ -30,17 +30,11 @@ public class SteamUserFetcher {
 
         WebClient webClient = WebClient.create();
 
-        SteamUserDataResponse responseBody = webClient.get()
+        return webClient.get()
                 .uri(builder.toUriString())
                 .retrieve()
                 .bodyToMono(SteamUserDataResponse.class)
                 .block();
-
-        if (responseBody != null) {
-            return responseBody;
-        }
-        System.out.println("Request failed or returned an empty response.");
-        return null;
     }
 
     public SteamUserSummaryDataResponse fetchSteamUserSummaryData(long steamId) {
@@ -51,16 +45,10 @@ public class SteamUserFetcher {
 
         WebClient webClient = WebClient.create();
 
-        SteamUserSummaryDataResponse responseBody = webClient.get()
+        return webClient.get()
                 .uri(builder.toUriString())
                 .retrieve()
                 .bodyToMono(SteamUserSummaryDataResponse.class)
                 .block();
-        System.out.println(responseBody.response().players().get(0).personaname());
-        if (responseBody != null) {
-            return responseBody;
-        }
-        System.out.println("Request failed or returned an empty response.");
-        return null;
     }
 }

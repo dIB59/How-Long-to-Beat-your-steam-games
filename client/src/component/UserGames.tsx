@@ -48,7 +48,7 @@ export const UserGames: FC<UserGamesProps> = (props) => {
               </th>
               <th>
                 <h2>
-                  Number of Games
+                  Num. of Games
                   <button onClick={handleSort}>
                     {sortOrder === 'asc' ? '▲' : '▼'}
                   </button>
@@ -56,6 +56,9 @@ export const UserGames: FC<UserGamesProps> = (props) => {
               </th>
               <th>
                 <h2>Steam ID</h2>
+              </th>
+              <th>
+              <h2>Total Playtime</h2>
               </th>
               <th>
               </th>
@@ -71,6 +74,7 @@ export const UserGames: FC<UserGamesProps> = (props) => {
                 <td>{data.personaName}</td>
                 <td>{data.numberOfGames}</td>
                 <td>{data.steamId}</td>
+                <td>{data.totalPlaytime}</td>
                 <td>
                   {hoveredRow === index && (
                     <button onClick={() => handleDelete(data.id)}>Delete</button>

@@ -1,6 +1,7 @@
 package com.steamgames.steamgames.service;
 
 import com.steamgames.steamgames.fetcher.SteamUserFetcher;
+import com.steamgames.steamgames.model.GameRecord;
 import com.steamgames.steamgames.model.SteamUserDataResponse;
 import com.steamgames.steamgames.model.UserGames;
 import com.steamgames.steamgames.model.usersummary.SteamUserSummaryDataResponse;
@@ -31,9 +32,15 @@ public class UserGamesService {
         long steamIdL = Long.parseLong(steamId);
         SteamUserDataResponse userData = fetcher.fetchSteamUserGamesData(steamIdL);
         SteamUserSummaryDataResponse.ResponseData.Player player = fetcher.fetchSteamUserSummaryData(steamIdL).response().players().get(0);
-        System.out.println(userData);
-        System.out.println(userData.response().game_count());
-        UserGames usergames = new UserGames(steamIdL, userData.response().game_count(), player.personaname());
+        int totalPlayTime = userData.response().games().stream()
+                .mapToInt(GameRecord::playtimeForever)
+                .sum()/60;
+        System.out.println(totalPlayTime);
+        UserGames usergames = new UserGames(steamIdL,
+                userData.response().game_count(),
+                player.personaname(),
+                totalPlayTime);
+
         repo.saveUserGames(usergames);
         return usergames;
     }
