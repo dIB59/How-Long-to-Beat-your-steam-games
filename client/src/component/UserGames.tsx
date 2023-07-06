@@ -22,7 +22,7 @@ export const UserGames: FC<UserGamesProps> = (props) => {
       {loading ? (
         <p>Loading games...</p>
       ) : userGamesData && userGamesData.length > 0 ? (
-        <table>
+        <table className='table'>
             <thead>
                 <tr>
                 <th><h2>ID</h2></th>

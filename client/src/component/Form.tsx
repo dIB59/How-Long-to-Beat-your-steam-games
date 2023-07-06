@@ -24,7 +24,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, error }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-          <input
+          <input className='input-field'
           //field is empty then have the user enter a user ID
             placeholder="Enter your Steam ID"
             type="text"

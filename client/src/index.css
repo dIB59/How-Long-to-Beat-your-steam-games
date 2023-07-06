@@ -36,6 +36,23 @@ h1 {
   line-height: 1.1;
 }
 
+.input-field {
+  border-radius: 8px;
+  border: 1px solid #1a1a1a;
+  padding: 0.6em 1em;
+  font-size: 1em;
+  font-weight: 400;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  transition: border-color 0.25s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: white;
+  box-shadow: 0 0 4px rgba(26, 26, 26, 0.4);
+}
+
 .btn {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -47,6 +64,7 @@ h1 {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #ffffff;
 }
@@ -60,15 +78,57 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: inherit;
 }
+
+.table th, .table td {
+  padding: 0.5em;
+  text-align: left;
+  border-bottom: 1px solid #1a1a1a;
+  color: #000000; /* Black font color */
+}
+
+.table th {
+  font-weight: 500;
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.table td {
+  font-weight: 400;
+  background-color: #ffffff;
+}
+
+.table tr:nth-child(even) td {
+  background-color: #f2f2f2;
+}
+
+.table tr:hover td {
+  background-color: #e6e6e6;
+}
+
+.table button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em ;
+  margin: 0.5em 0.5em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #ffffff; /* White font color for buttons */
+  text-decoration: none;
+  display: inline-block;
+}
+
+.table button:hover {
+  border-color: #1a1a1a;
+  background-color: #ffffff; /* White background on hover */
+  color: #1a1a1a; /* Black font color on hover */
+}
+

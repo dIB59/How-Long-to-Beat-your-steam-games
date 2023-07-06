@@ -15,7 +15,6 @@ function App() {
   const [userGamesData, setUserGamesData] = useState<UserGame[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
-
   const [responseData, setResponseData] = useState<ResponseData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
@@ -37,9 +36,8 @@ function App() {
     const sortedData = [...userGamesData!].sort((a, b) => {
       if (sortOrder === 'asc') {
         return a.numberOfGames - b.numberOfGames;
-      } else {
-        return b.numberOfGames - a.numberOfGames;
-      }
+      } 
+      return b.numberOfGames - a.numberOfGames;
     });
 
     setUserGamesData(sortedData);
