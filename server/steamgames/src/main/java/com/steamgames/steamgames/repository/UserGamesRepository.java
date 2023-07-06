@@ -1,5 +1,6 @@
-package com.steamgames.steamgames.user;
+package com.steamgames.steamgames.repository;
 
+import com.steamgames.steamgames.model.UserGames;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

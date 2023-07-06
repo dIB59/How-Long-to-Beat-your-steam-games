@@ -1,5 +1,7 @@
-package com.steamgames.steamgames.user;
+package com.steamgames.steamgames.controller;
 
+import com.steamgames.steamgames.model.UserGames;
+import com.steamgames.steamgames.service.UserGamesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;

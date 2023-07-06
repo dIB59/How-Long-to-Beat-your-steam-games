@@ -1,4 +1,4 @@
-package com.steamgames.steamgames.user;
+package com.steamgames.steamgames.model;
 
 import jakarta.persistence.*;
 
