@@ -1,42 +1,37 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
+import { UserGame } from '../types';
 
-type UserGame = {
-  id: number;
-  numberOfGames: number;
-  steamId: string;
-};
+type UserGamesProps = {
+  loading: boolean;
+  userGamesData: UserGame[] | null;
+  fetchData: () => Promise<void>;
+  handleSort: () => void;
+  sortOrder: 'asc' | 'desc';
+}
 
-export const UserGames = () => {
-  const [userGamesData, setUserGamesData] = useState<UserGame[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+export const UserGames: FC<UserGamesProps> = (props) => {
+  const { userGamesData, loading, fetchData, handleSort, sortOrder } = props;
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get<UserGame[]>('http://localhost:8080/api/users');
-        setUserGamesData(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchData();
   }, []);
     
   return (
     <main className='userGamesArticle'>
       {loading ? (
-        <p>Loading user games...</p>
+        <p>Loading games...</p>
       ) : userGamesData && userGamesData.length > 0 ? (
         <table>
             <thead>
                 <tr>
                 <th><h2>ID</h2></th>
-                <th><h2>Number of Games</h2></th>
+                <th>
+                  <h2>Number of Games
+                  <button onClick={handleSort}>
+                  {sortOrder === 'asc' ? '▲' : '▼'}
+                  </button></h2>
+                </th>
                 <th><h2>Steam ID</h2></th>
                 </tr>
             </thead>

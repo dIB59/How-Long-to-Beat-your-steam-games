@@ -32,7 +32,7 @@ const Form: React.FC<FormProps> = ({ onSubmit, error }) => {
             onChange={(event) => setUserId(event.target.value)}
           />
         </label>
-        <button type="submit">Submit</button>
+        <button className="btn" type="submit">Submit</button>
       </form>
       {error && <div>Error: {error}</div>}
     </div>
