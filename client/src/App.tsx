@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 import { UserGames } from './component/UserGames';
+import Form from './component/Form';
 
 type ResponseData = {
   id: number;
@@ -10,15 +11,10 @@ type ResponseData = {
 };
 
 function App() {
-
-  const [userId, setUserId] = useState('');
   const [responseData, setResponseData] = useState<ResponseData | null>(null);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (event: { preventDefault: () => void; }) => {
-    event.preventDefault();
-
-    // Make the POST request using Axios
+  const handleSubmit = (userId: string) => {
     axios
       .post('http://localhost:8080/api/users', { userId: userId })
       .then((response) => {
@@ -32,23 +28,13 @@ function App() {
         setResponseData(null);
       });
   };
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          User ID:
-          <input
-            type="text"
-            value={userId}
-            onChange={(event) => setUserId(event.target.value)}
-          />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-      {error && <div>Error: {error}</div>}
+      <Form onSubmit={handleSubmit} error={error} />
       {responseData && (
         <div>
-         You added a new user with the ID: {responseData.id}
+          You added a new user with the ID: {responseData.id}
         </div>
       )}
       <hr />
@@ -56,5 +42,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
