@@ -86,8 +86,7 @@ h1 {
   margin-top: 0;
   font-weight: 500;
   background-color: #1a1a1a;
-  color: #ffffff;
-  padding: 1rem 1rem 0rem 1rem;  padding-top: 0;
+  color: #ffffff;;
 }
 
 .table td {
@@ -118,9 +117,9 @@ h1 {
   text-decoration: none;
   display: inline-block;
 }
+
 button:hover {
   border-color: #1a1a1a;
   background-color: #ffffff;
   color: #1a1a1a; 
 }
-

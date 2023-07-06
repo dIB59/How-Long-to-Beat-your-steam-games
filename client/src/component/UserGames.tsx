@@ -44,21 +44,21 @@ export const UserGames: FC<UserGamesProps> = (props) => {
           <thead>
             <tr>
             <th>
-                <h2>Persona</h2>
+                <h4>Persona</h4>
               </th>
               <th>
-                <h2>
+                <h4>
                   Num. of Games
                   <button onClick={handleSort}>
                     {sortOrder === 'asc' ? '▲' : '▼'}
                   </button>
-                </h2>
+                </h4>
               </th>
               <th>
-                <h2>Steam ID</h2>
+                <h4>Steam ID</h4>
               </th>
               <th>
-              <h2>Total Playtime</h2>
+              <h4>Total Playtime</h4>
               </th>
               <th>
               </th>
@@ -72,9 +72,9 @@ export const UserGames: FC<UserGamesProps> = (props) => {
                 onMouseLeave={() => handleRowHover(0)}
               >
                 <td>{data.personaName}</td>
-                <td>{data.numberOfGames}</td>
+                <td>{data.numberOfGames === -1 ? 'private' : data.numberOfGames}</td>
                 <td>{data.steamId}</td>
-                <td>{data.totalPlaytime}</td>
+                <td>{data.totalPlaytime === -1 ? 'private' : `${data.totalPlaytime} hrs`}</td>
                 <td>
                   {hoveredRow === index && (
                     <button onClick={() => handleDelete(data.id)}>Delete</button>
