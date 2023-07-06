@@ -30,7 +30,6 @@ public class SteamUserFetcherTest {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.openMocks(this);
-//        steamUserFetcher = new SteamUserFetcher();
     }
 
     @Test
