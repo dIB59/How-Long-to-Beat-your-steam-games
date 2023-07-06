@@ -12,11 +12,16 @@ type UserGamesProps = {
 
 export const UserGames: FC<UserGamesProps> = (props) => {
   const { userGamesData, loading, fetchData, handleSort, sortOrder } = props;
+  const [hoveredRow, setHoveredRow] = useState<number | null>(null);
 
   useEffect(() => {
     fetchData();
   }, []);
-    
+  
+  const handleRowHover = (index: number) => {
+    setHoveredRow(index);
+  };
+
   return (
     <main className='userGamesArticle'>
       {loading ? (

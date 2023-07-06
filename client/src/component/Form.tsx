@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-type ResponseData = {
-  id: number;
-  steamId: string;
-  numberOfGames: number;
-};
+// type ResponseData = {
+//   id: number;
+//   steamId: string;
+//   numberOfGames: number;
+// };
 
 type FormProps = {
   onSubmit: (userId: string) => void;
@@ -25,7 +25,6 @@ const Form: React.FC<FormProps> = ({ onSubmit, error }) => {
       <form onSubmit={handleSubmit}>
         <label>
           <input className='input-field'
-          //field is empty then have the user enter a user ID
             placeholder="Enter your Steam ID"
             type="text"
             value={userId}

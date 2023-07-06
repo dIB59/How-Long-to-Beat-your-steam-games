@@ -12,7 +12,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  padding: 0;
 }
+
 
 a {
   font-weight: 500;
@@ -65,36 +67,27 @@ h1 {
   transition: border-color 0.25s;
 }
 
-button:hover {
-  border-color: #ffffff;
-}
-button:active {
-  color: black;
-  background-color: white;
-  transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
 .table {
   border-collapse: collapse;
   width: 100%;
   font-family: inherit;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .table th, .table td {
   padding: 0.5em;
   text-align: left;
   border-bottom: 1px solid #1a1a1a;
-  color: #000000; /* Black font color */
+  color: #000000;
 }
 
 .table th {
+  margin-top: 0;
   font-weight: 500;
   background-color: #1a1a1a;
   color: #ffffff;
+  padding: 1rem 1rem 0rem 1rem;  padding-top: 0;
 }
 
 .table td {
@@ -121,14 +114,13 @@ button:focus-visible {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
-  color: #ffffff; /* White font color for buttons */
+  color: #ffffff;
   text-decoration: none;
   display: inline-block;
 }
-
-.table button:hover {
+button:hover {
   border-color: #1a1a1a;
-  background-color: #ffffff; /* White background on hover */
-  color: #1a1a1a; /* Black font color on hover */
+  background-color: #ffffff;
+  color: #1a1a1a; 
 }
 
