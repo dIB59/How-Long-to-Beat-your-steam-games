@@ -25,9 +25,10 @@ public class UserGamesService {
     HlbtFetcher hlbtFetcher;
 
     @Autowired
-    public UserGamesService(UserGamesRepository repo,
-                            SteamUserFetcher fetcher,
-                            HlbtFetcher hlbtFetcher) {
+    public UserGamesService(
+            UserGamesRepository repo,
+            SteamUserFetcher fetcher,
+            HlbtFetcher hlbtFetcher) {
         this.repo = repo;
         this.fetcher = fetcher;
         this.hlbtFetcher = hlbtFetcher;
