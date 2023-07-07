@@ -1,4 +1,4 @@
-package com.steamgames.steamgames.model;
+package com.steamgames.steamgames.model.hlbt;
 
 public record Data(int count, int game_id, String game_name, int game_name_date, String game_alias,
                    String game_type, String game_image, int comp_lvl_combine, int comp_lvl_sp,

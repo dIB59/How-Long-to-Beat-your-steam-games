@@ -1,4 +1,6 @@
-package com.steamgames.steamgames.model;
+package com.steamgames.steamgames.model.hlbt;
+
+import com.steamgames.steamgames.model.hlbt.Data;
 
 import java.util.List;
 

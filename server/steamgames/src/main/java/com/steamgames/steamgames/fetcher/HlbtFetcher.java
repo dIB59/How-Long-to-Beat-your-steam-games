@@ -1,13 +1,17 @@
 package com.steamgames.steamgames.fetcher;
 
-import com.steamgames.steamgames.model.HlbtResponseRecord;
+import com.steamgames.steamgames.model.hlbt.HlbtResponseRecord;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
+import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.BodyInserters;
 
+import reactor.core.publisher.Mono;
+
+@Component
 public class HlbtFetcher {
-    public HlbtResponseRecord fetchHlbtData(String searchTerm) {
+    public Mono<HlbtResponseRecord> fetchHlbtData(String searchTerm) {
         String baseUrl = "https://howlongtobeat.com/api/search";
 
         WebClient webClient = WebClient.builder()
@@ -19,16 +23,12 @@ public class HlbtFetcher {
         payload.setSearchType("games");
         payload.setSearchTerms(new String[]{searchTerm});
         payload.setSearchPage(1);
-        payload.setSize(1);
+        payload.setSize(10);
 
-        HlbtResponseRecord response = webClient.post()
+        return webClient.post()
                 .uri(baseUrl)
                 .body(BodyInserters.fromValue(payload))
                 .retrieve()
-                .bodyToMono(HlbtResponseRecord.class)
-                .block();
-
-        System.out.println(response);
-        return response;
+                .bodyToMono(HlbtResponseRecord.class);
     }
 }
