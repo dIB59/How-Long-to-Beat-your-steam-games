@@ -1,11 +1,4 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-
-// type ResponseData = {
-//   id: number;
-//   steamId: string;
-//   numberOfGames: number;
-// };
 
 type FormProps = {
   onSubmit: (userId: string) => void;

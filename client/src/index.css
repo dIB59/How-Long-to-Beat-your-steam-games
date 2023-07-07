@@ -129,9 +129,14 @@ button:hover {
   
 }
 
+button:active {
+  border-color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+}
+
 .table button:active {
   border-color: rgb(205, 55, 55);
   background-color: rgb(205, 55, 55);
   color: #000000;  
-  /* transition: background-color 0.1s; */
 }
