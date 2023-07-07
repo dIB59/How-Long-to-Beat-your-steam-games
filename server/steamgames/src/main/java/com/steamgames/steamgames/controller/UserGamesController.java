@@ -1,5 +1,6 @@
 package com.steamgames.steamgames.controller;
 
+import com.steamgames.steamgames.model.AddUserDTO;
 import com.steamgames.steamgames.model.UserGames;
 import com.steamgames.steamgames.service.UserGamesService;
 import org.apache.catalina.realm.AuthenticatedUserRealm;
@@ -30,10 +31,14 @@ public class UserGamesController {
     }
 
     @PostMapping
-    public ResponseEntity<UserGames> addUser(@RequestBody AddUserDTO userPost) {
-        UserGames body = service.addUser(userPost.userId());
-        logger.info(body.toString());
-        return ResponseEntity.ok(body);
+    public ResponseEntity<?> addUser(@RequestBody AddUserDTO userPost) {
+        try {
+            UserGames body = service.addUser(userPost.userId());
+            logger.info(body.toString());
+            return ResponseEntity.ok(body);
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @DeleteMapping("/{id}")
