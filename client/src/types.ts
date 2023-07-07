@@ -4,4 +4,5 @@ export type UserGame = {
     steamId: string;
     personaName: string;
     totalPlaytime: number;
+    timeToPlayAllGames: number;
 };

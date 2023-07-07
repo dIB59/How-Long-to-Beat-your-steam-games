@@ -102,6 +102,10 @@ h1 {
   background-color: #e6e6e6;
 }
 
+button:hover {
+  border-color: #ffffff;
+}
+
 .table button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -118,12 +122,16 @@ h1 {
   display: inline-block;
 }
 
-button:hover {
-  border-color: #ffffff;
-}
-
-button:active {
+.table button:hover {
   border-color: #1a1a1a;
   background-color: #ffffff;
   color: #1a1a1a; 
+  
+}
+
+.table button:active {
+  border-color: rgb(205, 55, 55);
+  background-color: rgb(205, 55, 55);
+  color: #000000;  
+  /* transition: background-color 0.1s; */
 }

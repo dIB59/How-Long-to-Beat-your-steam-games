@@ -61,6 +61,9 @@ export const UserGames: FC<UserGamesProps> = (props) => {
               <h4>Total Playtime</h4>
               </th>
               <th>
+              <h4>Time to play all games</h4>
+              </th>
+              <th>
               </th>
             </tr>
           </thead>
@@ -75,6 +78,7 @@ export const UserGames: FC<UserGamesProps> = (props) => {
                 <td>{data.numberOfGames === -1 ? 'private' : data.numberOfGames}</td>
                 <td>{data.steamId}</td>
                 <td>{data.totalPlaytime < 1 ? 'private' : `${data.totalPlaytime} hrs`}</td>
+                <td>{data.timeToPlayAllGames < 1 ? 'private' : `${data.timeToPlayAllGames} hrs`}</td>
                 <td>
                   {hoveredRow === index && (
                     <button onClick={() => handleDelete(data.id)}>Delete</button>

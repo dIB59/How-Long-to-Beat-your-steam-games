@@ -42,6 +42,16 @@ public class UserGamesService {
         SteamUserDataResponse userData = fetcher.fetchSteamUserGamesData(steamIdL);
         SteamUserSummaryDataResponse.ResponseData.Player player = fetcher.fetchSteamUserSummaryData(steamIdL).response().players().get(0);
 
+        if (userData.response().games() == null) {
+            UserGames usergames = new UserGames(steamIdL,
+                    -1,
+                    player.personaname(),
+                    -1,
+                    -1);
+            repo.saveUserGames(usergames);
+            return usergames;
+        }
+
         int totalPlayTime = userData.response().games().stream()
                 .mapToInt(GameRecord::playtimeForever)
                 .sum()/60;
@@ -57,17 +67,7 @@ public class UserGamesService {
                 .reduce(Integer::sum)
                 .defaultIfEmpty(0);
 
-        if (userData.response().games() == null) {
-            UserGames usergames = new UserGames(steamIdL,
-                    -1,
-                    player.personaname(),
-                    -1,
-                    -1);
-            repo.saveUserGames(usergames);
-            return usergames;
-        }
-
-        int timeToPlayAllGamesInList = timeToPlayAllGames.block();
+        int timeToPlayAllGamesInList = timeToPlayAllGames.block()/3600;
 
         UserGames usergames = new UserGames(steamIdL,
                 userData.response().game_count(),
