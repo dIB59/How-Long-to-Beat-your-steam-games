@@ -1,6 +1,6 @@
 # SteamGames
 
-Welcome to SteamGames, a project that allows you to retrieve data about Steam users. This README will guide you on how to use the project effectively.
+Welcome to SteamGames, a project that allows you to retrieve data about Steam users. It is mainly about how long it will take a user to beat thier entire steam library. This README will guide you on how to use the project effectively.
 
 ## Getting Started
 
