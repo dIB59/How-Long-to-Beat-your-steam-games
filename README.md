@@ -15,15 +15,17 @@ docker-compose up
 4. Open the project in your preferred IDE, such as IntelliJ.
 5. Run the `SteamGamesApplication` class to start the backend.
 6. Open the `client` folder in your terminal.
-7. Run the following command to start the client:
+7. Run the following command to install the necessary dependencies:
 ```
 npm install
 ```
-8. Once the client is running, open your browser and go to `http://127.0.0.1:5174/`.
-9. In the input field, enter a Steam username to retrieve data about it.
+8. Run the following command to start the client:
 ```
 npm run dev
 ```
+9. Once the client is running, open your browser and go to `http://127.0.0.1:5174/`.
+10. In the input field, enter a Steam username to retrieve data about it.
+
 ## Screenshots
 
 Here's a screenshot of the project in action:
