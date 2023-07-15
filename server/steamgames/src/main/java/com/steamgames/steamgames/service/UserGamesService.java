@@ -39,12 +39,11 @@ public class UserGamesService {
     }
 
     public UserGames addUser(String steamId) {
-        long steamIdL = Long.parseLong(steamId);
-        SteamUserDataResponse userData = fetcher.fetchSteamUserGamesData(steamIdL);
-        SteamUserSummaryDataResponse.ResponseData.Player player = fetcher.fetchSteamUserSummaryData(steamIdL).response().players().get(0);
+        SteamUserDataResponse userData = fetcher.fetchSteamUserGamesData(Long.parseLong(steamId));
+        SteamUserSummaryDataResponse.ResponseData.Player player = fetcher.fetchSteamUserSummaryData(Long.parseLong(steamId)).response().players().get(0);
 
         if (userData.response().games() == null) {
-            UserGames usergames = new UserGames(steamIdL,
+            UserGames usergames = new UserGames(steamId,
                     -1,
                     player.personaname(),
                     -1,
@@ -70,7 +69,7 @@ public class UserGamesService {
 
         int timeToPlayAllGamesInList = timeToPlayAllGames.block()/3600;
 
-        UserGames usergames = new UserGames(steamIdL,
+        UserGames usergames = new UserGames(steamId,
                 userData.response().game_count(),
                 player.personaname(),
                 totalPlayTime,

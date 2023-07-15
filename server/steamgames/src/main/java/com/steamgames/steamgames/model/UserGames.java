@@ -10,7 +10,7 @@ public class UserGames {
     @Column(name = "id", nullable = false)
     private Long id;
     private String personaName;
-    private long steamId;
+    private String steamId;
     private int numberOfGames;
     private int totalPlaytime;
     private int timeToPlayAllGames;
@@ -43,11 +43,11 @@ public class UserGames {
         this.numberOfGames = numberOfGames;
     }
 
-    public long getSteamId() {
+    public String getSteamId() {
         return steamId;
     }
 
-    public void setSteamId(long steamId) {
+    public void setSteamId(String steamId) {
         this.steamId = steamId;
     }
 
@@ -59,7 +59,7 @@ public class UserGames {
         this.personaName = personname;
     }
 
-    public UserGames(long steamId, int numberOfGames, String personaName, int totalPlaytime, int timeToPlayAllGames) {
+    public UserGames(String steamId, int numberOfGames, String personaName, int totalPlaytime, int timeToPlayAllGames) {
         this.steamId = steamId;
         this.numberOfGames = numberOfGames;
         this.personaName = personaName;
